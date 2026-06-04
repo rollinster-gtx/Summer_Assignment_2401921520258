@@ -1,0 +1,27 @@
+/*
+Problem: Matrix Diagonal Sum
+LeetCode: 1572
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+*/
+
+class Solution {
+public:
+    int diagonalSum(vector<vector<int>>& mat) {
+        int n = mat.size();
+        int sum = 0;
+
+        for(int i = 0; i < n; i++) {
+            sum += mat[i][i];               // Primary diagonal
+            sum += mat[i][n - 1 - i];       // Secondary diagonal
+        }
+
+        // Middle element counted twice in odd-sized matrix
+        if(n % 2 == 1) {
+            sum -= mat[n / 2][n / 2];
+        }
+
+        return sum;
+    }
+};
